@@ -1,0 +1,31 @@
+<ion-header>
+	<ion-navbar>
+		<ion-title>Home</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content padding>
+	<h3>Login</h3>
+	<form [formGroup]="loginForm" (submit)="enviando()">
+		<ng-container *ngIf="!config.estaLogando">
+			<ion-item>
+				<ion-label floating>Nome Completo</ion-label>
+				<ion-icon name="person" color="primary" slot="start"></ion-icon>
+				<ion-input type="text" formControlName="nome"></ion-input>
+			</ion-item>
+		</ng-container>
+		<ion-item>
+			<ion-label floating>Usuário</ion-label>
+			<ion-icon name="mail" color="primary" slot="start"></ion-icon>
+			<ion-input type="text" formControlName="username"></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label floating>Senha</ion-label>
+			<ion-icon name="lock" color="primary" slot="start"></ion-icon>
+			<ion-input type="password" formControlName="password"></ion-input>
+		</ion-item>
+		<button type="submit" block ion-button
+    [disabled]="loginForm.invalid">{{ config.acao }}</button>
+		<button block ion-button (click) = "mudancaDeAcao()">{{ config.mudancaAcao }}</button>
+	</form>
+</ion-content>
